@@ -86,6 +86,7 @@ public class App
 			pl();
 			rou.printFullLog();
 			pl("Game set!!!!!");
+			pl();
 			
 			//After winning
 			if (p1.isAlive()) {
