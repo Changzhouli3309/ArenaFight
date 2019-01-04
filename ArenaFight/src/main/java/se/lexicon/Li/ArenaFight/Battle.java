@@ -16,9 +16,9 @@ public class Battle {
 	 */
 	public String fightLog(int s1, int s2,int r, String p1,String p2) {
 		if(s1==s2) {
-			return "Round "+r+": Draw";
+			return "Round "+r+": "+p1+" Power:"+s1+", "+p2+" Power:"+s2+"\nDraw!";
 		}else {
-			return "Round "+r+": "+p1+" Power:"+s1+", "+p2+" Power:"+s2+"\n "+
+			return "Round "+r+": "+p1+" Power:"+s1+", "+p2+" Power:"+s2+"\n"+
 					getWin(s1, s2, p1, p2)+" Win!";
 		}
 	}

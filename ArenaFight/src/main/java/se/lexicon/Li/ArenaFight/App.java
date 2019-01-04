@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class App 
 {
 	private static Scanner scan=new Scanner(System.in);
+	
     public static void main( String[] args )
     {
     	String[] randomName= {"Svea","Alfred","Rut","Hannele","Kasper","Melker","Baltsar","August",
@@ -44,9 +45,9 @@ public class App
 			//The fighting part
 			while (p1.isAlive() && bot.isAlive()) {
 				pl("Round "+rou.getRoundN()+" :");
-				pl(p1.toString());
+				pl(p1);
 				pl("vs");
-				pl(bot.toString());
+				pl(bot);
 				
 				pl("1-Fight, 2-Surrender");
 				
@@ -79,7 +80,7 @@ public class App
 				p1.savepLog("At round "+rou.getRoundN()+" You choos to surrender.");
 			}else {
 				p1.savepLog(p1.infRes(rou.getRoundN(), 
-						bat.getWin(p1.getPow(), bot.getPow(), p1.getName(), bot.getName())));
+						bat.getWin(p1.getPow(), bot.getPow(), p1.getName(), bot.getName()))+"\n");
 			}
 			
 			pl();
@@ -90,6 +91,7 @@ public class App
 			if (p1.isAlive()) {
 				vChoos=false;
 				while(!vChoos) {
+					pl(p1);
 					pl("1-Next Fight, 2-Retire, 3-Fighter´s log");
 					switch (FixInt.getIntFromLimit(3, 1)) {
 					case 1: 
@@ -112,7 +114,7 @@ public class App
 			//when you lost
 			if(!p1.isAlive()||p1.getHp()==0){
 				p1.printlog();
-				run=YOrN.bool("New fighter?(y/n)");
+				run=YOrN.bool("New Fighter?(y/n)");
 				newP1=true;
 			}
 			
@@ -134,6 +136,9 @@ public class App
 	*/
 	public static void pl(String s) {
 		System.out.println(s);
+	}
+	public static void pl(Fighter p) {
+		System.out.println(p);
 	}
 	/**
 	* System.out.print(s);

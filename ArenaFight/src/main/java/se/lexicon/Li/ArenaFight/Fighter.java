@@ -71,7 +71,7 @@ public class Fighter {
 	
 	@Override
 	public String toString() {
-		return "Fighter " + name + ", HP=" + hp + ", Pow=" + pow;
+		return "Fighter " + name + " HP=" + hp;
 	}
 	public Fighter(String name, int hp, int pow, boolean alive) {
 		this.name = name;
