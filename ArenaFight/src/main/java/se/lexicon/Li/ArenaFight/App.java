@@ -35,6 +35,7 @@ public class App
 						vName=true;
 					}
 				}
+				rou.setFightN(1);
 				newP1=false;
 			}else {
 				pl("Welcome back to The Arena, "+p1.getName());
@@ -76,7 +77,7 @@ public class App
 				pl();
 			}
 			if (!p1.isAlive()&&p1.getHp()!=0) {
-				p1.savepLog("At round "+rou.getRoundN()+" You choos to surrender.");
+				p1.savepLog("At round "+rou.getRoundN()+" You choos to surrender.+\n");
 			}else {
 				p1.savepLog(p1.infRes(rou.getRoundN(), 
 						bat.getWin(p1.getPow(), bot.getPow(), p1.getName(), bot.getName()))+"\n");
@@ -84,7 +85,7 @@ public class App
 			
 			pl();
 			rou.printFullLog();
-			pl("Game set!!!!!");
+			pl("Game Set!!!!!");
 			pl();
 			
 			//After winning

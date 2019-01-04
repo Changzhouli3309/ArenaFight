@@ -43,8 +43,7 @@ public class TestBattle {
 		
 		for (int i = 0; i < ROLL_TIMES; i++) {
 			int rn = testRou.rollDice();
-			Assert.assertTrue(rn <= max);
-			Assert.assertTrue(rn >= min);
+			Assert.assertTrue(rn <= max&&rn >= min);
 		}
 	}
 }

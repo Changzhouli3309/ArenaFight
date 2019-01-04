@@ -2,7 +2,7 @@ package se.lexicon.Li.ArenaFight;
 
 public class Fighter {
 	private String name;
-	private int hp=3,pow=0;
+	private int hp,pow=0;
 	private boolean alive=true;
 	private String[] pLog=new String[0];
 	
@@ -37,7 +37,7 @@ public class Fighter {
 	
 	public void printlog() {
 		System.out.println("---------------------------------");
-		System.out.println("Fighter "+name+"´s record:");
+		System.out.println("Fighter "+name+"´s record:\n");
 		for (String s:pLog) {
 			System.out.println(s);
 		}
