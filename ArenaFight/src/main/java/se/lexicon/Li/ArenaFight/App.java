@@ -48,7 +48,6 @@ public class App
 				pl(p1);
 				pl("vs");
 				pl(bot);
-				
 				pl("1-Fight, 2-Surrender");
 				
 				switch (FixInt.getIntFromLimit(3, 1)) {

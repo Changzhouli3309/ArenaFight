@@ -36,14 +36,15 @@ public class TestBattle {
 		int actual = testBat.battleRes(tester2.getName(), testBat.getWin(tester1.getPow(), tester2.getPow(), tester1.getName(), tester2.getName()));
 		Assert.assertEquals(expected, actual,0);
 	}
-	
+
 	@Test
 	public void roll_dice_test() {
 		int max=6,min=1;
 		
 		for (int i = 0; i < ROLL_TIMES; i++) {
-			double rn = testRou.getDice();
-			Assert.assertTrue(min <= rn && rn <= max);
+			int rn = testRou.rollDice();
+			Assert.assertTrue(rn <= max);
+			Assert.assertTrue(rn >= min);
 		}
 	}
 }

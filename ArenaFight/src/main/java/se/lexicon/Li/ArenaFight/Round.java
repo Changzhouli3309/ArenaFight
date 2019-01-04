@@ -6,7 +6,7 @@ package se.lexicon.Li.ArenaFight;
  * */
 public class Round {
 
-	private int fightN=1,roundN=1,dice;
+	private int fightN=1,roundN=1;
 	private String[] fullLog= new String[0];
 	
 	/**
@@ -64,12 +64,6 @@ public class Round {
 	}
 	public void setRoundN(int roundN) {
 		this.roundN = roundN;
-	}
-	public int getDice() {
-		return dice;
-	}
-	public void setDice(int dice) {
-		this.dice = dice;
 	}
 	public int getFightN() {
 		return fightN;

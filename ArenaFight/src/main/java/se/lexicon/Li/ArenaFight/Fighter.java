@@ -14,7 +14,7 @@ public class Fighter {
 	 * @return String
 	 */
 	public String infFighter(String p1,String p2,int fightN){
-		return "Fight "+fightN+": "+p1+" vs "+p2;
+		return "Fight No."+fightN+": "+p1+" vs "+p2;
 	}
 	
 	/**
