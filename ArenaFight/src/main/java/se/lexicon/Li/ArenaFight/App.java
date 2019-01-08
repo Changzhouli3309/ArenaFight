@@ -61,7 +61,6 @@ public class App
 					p1.setHp(p1.getHp() + bat.battleRes(p1,bat.getWin(p1,bot)));
 					bot.setHp(bot.getHp() + bat.battleRes(bot,bat.getWin(p1,bot)));
 
-					rou.goToNextRound();
 					pl("---------------------");
 					break;
 				case 2:
@@ -76,8 +75,8 @@ public class App
 			if (!p1.isAlive()&&p1.getHp()!=0) {
 				p1.savepLog("At round "+rou.getRoundN()+" You choos to surrender.+\n");
 			}else {
-				p1.savepLog(p1.infRes(rou.getRoundN(), 
-						bat.getWin(p1, bot))+"\n");
+				p1.savepLog(p1.infRes(rou.getRoundN(), bat.getWin(p1, bot))+"\n");
+				rou.goToNextRound();
 			}
 			
 			pl();
