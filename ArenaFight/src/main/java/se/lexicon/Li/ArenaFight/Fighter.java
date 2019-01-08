@@ -8,13 +8,13 @@ public class Fighter {
 	
 	/**
 	 * Massage tells names of fighters and number of fight
-	 * @param p1 :Name of fighter 1
-	 * @param p2 :Name of fighter 2
+	 * @param name1 :Name of fighter 1
+	 * @param name2 :Name of fighter 2
 	 * @param fightN Number of fight
 	 * @return String
 	 */
-	public String infFighter(String p1,String p2,int fightN){
-		return "Fight No."+fightN+": "+p1+" vs "+p2;
+	public String infFighter(String name1,String name2,int fightN){
+		return "Fight No."+fightN+": "+name1+" vs "+name2;
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class Fighter {
 	
 	@Override
 	public String toString() {
-		return "Fighter " + name + " HP=" + hp;
+		return "Fighter " + name + ", HP=" + hp+", Power="+pow;
 	}
 	public Fighter(String name, int hp, int pow, boolean alive) {
 		this.name = name;

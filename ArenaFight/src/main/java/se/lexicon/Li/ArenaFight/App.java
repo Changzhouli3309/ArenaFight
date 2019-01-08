@@ -56,13 +56,10 @@ public class App
 					p1.setPow(rou.rollDice());
 					bot.setPow(rou.rollDice());
 					
-					rou.saveLog(bat.fightLog(p1.getPow(), bot.getPow(), rou.getRoundN(), p1.getName(),
-							bot.getName()));
+					rou.saveLog(bat.fightLog(p1,bot, rou.getRoundN()));
 
-					p1.setHp(p1.getHp() + bat.battleRes(p1.getName(),
-							bat.getWin(p1.getPow(), bot.getPow(), p1.getName(), bot.getName())));
-					bot.setHp(bot.getHp() + bat.battleRes(bot.getName(),
-							bat.getWin(p1.getPow(), bot.getPow(), p1.getName(), bot.getName())));
+					p1.setHp(p1.getHp() + bat.battleRes(p1,bat.getWin(p1,bot)));
+					bot.setHp(bot.getHp() + bat.battleRes(bot,bat.getWin(p1,bot)));
 
 					rou.goToNextRound();
 					pl("---------------------");
@@ -80,7 +77,7 @@ public class App
 				p1.savepLog("At round "+rou.getRoundN()+" You choos to surrender.+\n");
 			}else {
 				p1.savepLog(p1.infRes(rou.getRoundN(), 
-						bat.getWin(p1.getPow(), bot.getPow(), p1.getName(), bot.getName()))+"\n");
+						bat.getWin(p1, bot))+"\n");
 			}
 			
 			pl();
@@ -88,7 +85,7 @@ public class App
 			pl("Game Set!!!!!");
 			pl();
 			
-			//After winning
+			//After win
 			if (p1.isAlive()) {
 				vChoos=false;
 				while(!vChoos) {
