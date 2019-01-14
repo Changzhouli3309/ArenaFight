@@ -26,7 +26,7 @@ public class Fighter {
 	 * @return String
 	 */
 	public String infRes(int rN, String win) {
-		return "At round " + rN + " " + win + " win";
+		return "At round " + rN + ", " + win + " win.";
 	}
 
 	/**
@@ -72,10 +72,17 @@ public class Fighter {
 			setAlive(false);
 		}
 	}
+	public static String addSpace(String s, int n) {
+		String re = s;
+		for (int i = 0; i < n - s.length(); i++) {
+			re += " ";
+		}
+		return re;
+	}
 
 	@Override
 	public String toString() {
-		return "Fighter " + name + ", HP=" + hp + ", Power=" + pow;
+		return "Fighter " + addSpace(name,8) + " (HP=" + FixInt.addZero(hp, 99) + ")" ;
 	}
 
 	public Fighter(String name, int hp, int pow, boolean alive) {

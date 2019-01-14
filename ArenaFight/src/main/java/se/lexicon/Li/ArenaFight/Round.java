@@ -31,7 +31,6 @@ public class Round {
 	 * @param s :Text to print and save
 	 */
 	public void saveLog(String s) {
-		System.out.println(s);
 		fullLog = FixArr.addToArr(fullLog, s);
 	}
 

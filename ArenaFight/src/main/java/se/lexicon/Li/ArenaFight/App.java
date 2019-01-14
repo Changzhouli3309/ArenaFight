@@ -46,16 +46,16 @@ public class App {
 			p1.savepLog(p1.infFighter(p1.getName(), bot.getName(), rou.getFightN()));
 
 			// The fighting part
-			while (p1.isAlive() && bot.isAlive()) {
-				rou.goToNextRound();
-				pl("Round " + rou.getRoundN() + " :");
-				pl(p1);
-				pl("vs");
-				pl(bot);
-				pl("1-Fight, 2-Surrender");
+			pl("Fight No." + rou.getFightN());
+			pl(p1);
+			pl("vs");
+			pl(bot);
+			pl("1-Fight, 2-Surrender");
+			switch (FixInt.getIntFromLimit(2, 1)) {
+			case 1:
+				while (p1.isAlive() && bot.isAlive()) {
+					rou.goToNextRound();
 
-				switch (FixInt.getIntFromLimit(2, 1)) {
-				case 1:
 					p1.setPow(rou.rollDice());
 					bot.setPow(rou.rollDice());
 					if (p1.isPowP()) {
@@ -68,20 +68,19 @@ public class App {
 						p1.setHp(p1.getHp() + 1);
 					}
 					bot.setHp(bot.getHp() + Battle.battleRes(bot, Battle.getWin(p1, bot)));
+					p1.stillAlive();
+					bot.stillAlive();
 
-					pl("---------------------");
-					break;
-				case 2:
-					rou.saveLog("You surrender.");
-					p1.setAlive(false);
-					break;
 				}
-				p1.stillAlive();
-				bot.stillAlive();
-				pl();
+				break;
+			case 2:
+				rou.saveLog("You surrender.");
+				p1.setAlive(false);
+				break;
 			}
+
 			if (!p1.isAlive() && p1.getHp() != 0) {
-				p1.savepLog("At round " + rou.getRoundN() + " You choos to surrender.\n");
+				p1.savepLog("At round " + rou.getRoundN() + ", You choos to surrender.\n");
 			} else {
 				p1.savepLog(p1.infRes(rou.getRoundN(), Battle.getWin(p1, bot)) + "\n");
 			}

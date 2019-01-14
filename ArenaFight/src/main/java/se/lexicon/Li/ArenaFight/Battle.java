@@ -16,24 +16,24 @@ public class Battle {
 	 */
 	public static String fightLog(Fighter p1, Fighter p2, int r) {
 		if (p1.getPow() == p2.getPow()) {
-			String re = "Round " + r + ": \n" + p1.getName() + " Power:" + p1.getPow();
-			if (p1.isPowP()) {
-				re += " (+1p)";
-			}
-			if (p1.isDefP()) {
-				re += " (-1d)";
-			}
-
-			return re + ",\n" + p2.getName() + " Power:" + p2.getPow() + "\nDraw!";
-		} else {
-			String re = "Round " + r + ": \n" + p1.getName() + " Power:" + p1.getPow();
+			String re = "Round " + r + ": \n" + p1 + " Power:" + p1.getPow();
 			if (p1.isPowP()) {
 				re += " (pow up)";
 			}
 			if (p1.isDefP()) {
 				re += " (def up)";
 			}
-			return re + ",\n" + p2.getName() + " Power:" + p2.getPow() + "\n" + getWin(p1, p2) + " Win!";
+
+			return re + "\n" + p2 + " Power:" + p2.getPow() + "\nDraw!";
+		} else {
+			String re = "Round " + r + ": \n" + p1 + " Power:" + p1.getPow();
+			if (p1.isPowP()) {
+				re += " (pow up)";
+			}
+			if (p1.isDefP()) {
+				re += " (def up)";
+			}
+			return re + "\n" + p2 + " Power:" + p2.getPow() + "\n" + getWin(p1, p2) + " Win!";
 		}
 	}
 
@@ -79,12 +79,12 @@ public class Battle {
 	 */
 	public static void inShop(Fighter p1) {
 		boolean inshop = true;
+		System.out.println("Welcome to Arena shop!!!(Balance: " + p1.getBalance() + ", 0-Back)"
+				+ "\n1-HP potion(+5hp, 10g)(Your hp:" + p1.getHp() + ")"
+				+ "\n2-Pow potion(+1 POW, next fight only, 12g)" 
+				+ "\n3-Def potion(-1 Dmg, next fight only, 13g)"
+				+ "\n4-Try your luck(10% chans get random potion, 5g)");
 		while (inshop) {
-			System.out.println("Welcome to Arena shop!!!(Balance: " + p1.getBalance() + ", 0-Back)"
-					+ "\n1-HP potion(+5hp, 10g)(Your hp:" + p1.getHp() + ")"
-					+ "\n2-Pow potion(+1 POW, next fight only, 12g)" 
-					+ "\n3-Def potion(-1 Dmg, next fight only, 13g)"
-					+ "\n4-Try your luck(10% chans get random potion, 5g)");
 			switch (FixInt.getIntFromLimit(4, 0)) {
 			case 0:
 				inshop = false;
@@ -93,26 +93,26 @@ public class Battle {
 				if (checkBalance(p1.getBalance(), 10)) {
 					p1.setBalance(p1.getBalance() - 10);
 					p1.setHp(p1.getHp() + 5);
-					System.out.println("You buy the Hp potion and drink it.\n");
+					System.out.println("You buy the Hp potion and drink it.");
 				}
 				break;
 			case 2:
 				if (checkBalance(p1.getBalance(), 12) && !p1.isPowP()) {
 					p1.setBalance(p1.getBalance() - 12);
 					p1.setPowP(true);
-					System.out.println("You buy the Pow potion and drink it.\n");
+					System.out.println("You buy the Pow potion and drink it.");
 				} else {
-					System.out.println("You already had Pow potion.\n");
+					System.out.println("You already had Pow potion.");
 				}
 				break;
 			case 3:
 				if (checkBalance(p1.getBalance(), 13) && !p1.isDefP()) {
 					p1.setBalance(p1.getBalance() - 13);
 					p1.setDefP(true);
-					System.out.println("You buy the Def potion and drink it.\n");
+					System.out.println("You buy the Def potion and drink it.");
 
 				} else {
-					System.out.println("You already had def potion.\n");
+					System.out.println("You already had def potion.");
 				}
 				break;
 			case 4:
@@ -120,24 +120,25 @@ public class Battle {
 					p1.setBalance(p1.getBalance() - 5);
 					switch (FixInt.randomInt(9, 0)) {
 					case 0:
-						System.out.println("Nice! you get the Hp potion and drink it.\n");
+						System.out.println("Nice! you get the Hp potion and drink it.");
 						p1.setHp(p1.getHp() + 5);
 						break;
 					case 1:
-						System.out.println("Nice! you get the Pow potion and drink it.\n");
+						System.out.println("Nice! you get the Pow potion and drink it.");
 						p1.setPowP(true);
 						break;
 					case 2:
-						System.out.println("Nice! you get the Def potion and drink it.\n");
+						System.out.println("Nice! you get the Def potion and drink it.");
 						p1.setDefP(true);
 						break;
 					default:
-						System.out.println("Sorry! you didn´t get anything.\n");
+						System.out.println("Sorry! you didn´t get anything.");
 						break;
 					}
 				}
 				break;
 			}
+			System.out.println("Your hp=" + p1.getHp()+", Balance="+p1.getBalance()+"g");
 		}
 	}
 
@@ -145,7 +146,7 @@ public class Battle {
 		if (balance >= price) {
 			return true;
 		} else {
-			System.out.println("You don´t have enough money.\n");
+			System.out.println("You don´t have enough money.");
 			return false;
 		}
 	}
