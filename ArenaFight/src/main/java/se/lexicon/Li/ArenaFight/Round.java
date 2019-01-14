@@ -7,14 +7,14 @@ package se.lexicon.Li.ArenaFight;
  */
 public class Round {
 
-	private int fightN = 1, roundN = 1;
+	private int fightN = 1, roundN = 0;
 	private String[] fullLog = new String[0];
 
 	/**
 	 * Rest the number of round and empty battle log
 	 */
 	public void restR() {
-		setRoundN(1);
+		roundN = 0;
 		fullLog = new String[0];
 	}
 
@@ -22,7 +22,7 @@ public class Round {
 	 * Number of round plus 1
 	 */
 	public void goToNextRound() {
-		setRoundN(getRoundN() + 1);
+		roundN += 1;
 	}
 
 	/**
@@ -50,15 +50,13 @@ public class Round {
 	public void printFullLog() {
 		System.out.println("Battle log:-------------------");
 		if (fullLog.equals(null)) {
-			System.out.println("Battle log is empty");
-			System.out.println();
+			System.out.println("Battle log is empty\n");
 		}
 		for (String s : fullLog) {
-			System.out.println(s);
-			System.out.println();
+			System.out.println(s + "\n");
+
 		}
-		System.out.println("-------------------------------");
-		System.out.println();
+		System.out.println("-------------------------------\n");
 	}
 
 	public int getRoundN() {

@@ -2,8 +2,8 @@ package se.lexicon.Li.ArenaFight;
 
 public class Fighter {
 	private String name;
-	private int hp, pow = 0;
-	private boolean alive = true;
+	private int hp, pow, balance = 0;
+	private boolean alive = true, powP = false, defP = false;
 	private String[] pLog = new String[0];
 
 	/**
@@ -68,7 +68,7 @@ public class Fighter {
 	 * Check the hp for fighter.
 	 */
 	public void stillAlive() {
-		if (getHp() == 0) {
+		if (getHp() <= 0) {
 			setAlive(false);
 		}
 	}
@@ -124,5 +124,29 @@ public class Fighter {
 
 	public void setPow(int pow) {
 		this.pow = pow;
+	}
+
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+
+	public boolean isPowP() {
+		return powP;
+	}
+
+	public void setPowP(boolean powP) {
+		this.powP = powP;
+	}
+
+	public boolean isDefP() {
+		return defP;
+	}
+
+	public void setDefP(boolean defP) {
+		this.defP = defP;
 	}
 }
