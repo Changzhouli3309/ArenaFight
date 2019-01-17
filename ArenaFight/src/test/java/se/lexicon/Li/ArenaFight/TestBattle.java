@@ -5,7 +5,6 @@ import org.junit.*;
 public class TestBattle {
 	private Fighter tester1;
 	private Fighter tester2;
-	private Battle testBat = new Battle();
 	private final int ROLL_TIMES = 500;
 	private Round testRou = new Round();
 
@@ -27,7 +26,7 @@ public class TestBattle {
 	@Test
 	public void battle_win_test() {
 		String expected = "Test1";
-		String actual = testBat.getWin(tester1, tester2);
+		String actual = Battle.getWin(tester1, tester2);
 		Assert.assertEquals(expected, actual);
 
 	}
@@ -35,7 +34,7 @@ public class TestBattle {
 	@Test
 	public void battle_res_test() {
 		int expected = -1;
-		int actual = testBat.battleRes(tester2, testBat.getWin(tester1, tester2));
+		int actual = Battle.battleRes(tester2, Battle.getWin(tester1, tester2));
 		Assert.assertEquals(expected, actual, 0);
 	}
 

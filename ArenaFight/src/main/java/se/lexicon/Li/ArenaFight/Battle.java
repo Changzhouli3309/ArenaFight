@@ -101,7 +101,7 @@ public class Battle {
 					p1.setBalance(p1.getBalance() - 12);
 					p1.setPowP(true);
 					System.out.println("You buy the Pow potion and drink it.");
-				} else {
+				} else if(p1.isPowP()){
 					System.out.println("You already had Pow potion.");
 				}
 				break;
@@ -111,7 +111,7 @@ public class Battle {
 					p1.setDefP(true);
 					System.out.println("You buy the Def potion and drink it.");
 
-				} else {
+				} else if(p1.isDefP()){
 					System.out.println("You already had def potion.");
 				}
 				break;
@@ -138,7 +138,7 @@ public class Battle {
 				}
 				break;
 			}
-			System.out.println("Your hp=" + p1.getHp()+", Balance="+p1.getBalance()+"g");
+			System.out.println("Your hp: " + p1.getHp()+", Balance: "+p1.getBalance()+"g\n1-4 Buy more, 0-Back");
 		}
 	}
 

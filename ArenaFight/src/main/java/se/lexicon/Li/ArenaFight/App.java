@@ -50,36 +50,47 @@ public class App {
 			pl(p1);
 			pl("vs");
 			pl(bot);
-			pl("1-Fight, 2-Surrender");
-			switch (FixInt.getIntFromLimit(2, 1)) {
-			case 1:
-				while (p1.isAlive() && bot.isAlive()) {
-					rou.goToNextRound();
+			
+			boolean watchR=true;
+			
+			while (watchR) {
+				pl("1-Fight, 2-Surrender, 3-Rules");
+				switch (FixInt.getIntFromLimit(3, 1)) {
+				case 1:
+					watchR=false;
+					while (p1.isAlive() && bot.isAlive()) {
+						rou.goToNextRound();
 
-					p1.setPow(rou.rollDice());
-					bot.setPow(rou.rollDice());
-					if (p1.isPowP()) {
-						p1.setPow(p1.getPow() + 1);
+						p1.setPow(rou.rollDice());
+						bot.setPow(rou.rollDice());
+						if (p1.isPowP()) {
+							p1.setPow(p1.getPow() + 1);
+						}
+						rou.saveLog(Battle.fightLog(p1, bot, rou.getRoundN()));
+
+						p1.setHp(p1.getHp() + Battle.battleRes(p1, Battle.getWin(p1, bot)));
+						if (p1.isDefP() && Battle.getWin(p1, bot).equals(bot.getName())) {
+							p1.setHp(p1.getHp() + 1);
+						}
+						bot.setHp(bot.getHp() + Battle.battleRes(bot, Battle.getWin(p1, bot)));
+						p1.stillAlive();
+						bot.stillAlive();
+
 					}
-					rou.saveLog(Battle.fightLog(p1, bot, rou.getRoundN()));
-
-					p1.setHp(p1.getHp() + Battle.battleRes(p1, Battle.getWin(p1, bot)));
-					if (p1.isDefP() && Battle.getWin(p1, bot).equals(bot.getName())) {
-						p1.setHp(p1.getHp() + 1);
-					}
-					bot.setHp(bot.getHp() + Battle.battleRes(bot, Battle.getWin(p1, bot)));
-					p1.stillAlive();
-					bot.stillAlive();
-
+					break;
+				case 2:
+					watchR=false;
+					rou.saveLog("You surrender.");
+					p1.setAlive(false);
+					break;
+				case 3:
+					pl("The Rules is simple."
+							+ "\nRoll the dice."
+							+ "\nWho had higher number wins."
+							+ "\nDeals 2 dmg to enemy.\n");
 				}
-				break;
-			case 2:
-				rou.saveLog("You surrender.");
-				p1.setAlive(false);
-				break;
 			}
-
-			if (!p1.isAlive() && p1.getHp() != 0) {
+			if (!p1.isAlive() && p1.getHp() > 0) {
 				p1.savepLog("At round " + rou.getRoundN() + ", You choos to surrender.\n");
 			} else {
 				p1.savepLog(p1.infRes(rou.getRoundN(), Battle.getWin(p1, bot)) + "\n");
